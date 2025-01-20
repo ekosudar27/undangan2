@@ -514,7 +514,7 @@
       function stopAutoScroll() {
         clearTimeout(autoScrollTimeout);
         document.querySelector('#hero').style.display = 'none';
-        document.querySelector('#gallery').style.display = 'none';
+        //document.querySelector('#gallery').style.display = 'none';
       }
 
      function autoScrollGallery() {
@@ -539,10 +539,12 @@
 
       window.addEventListener('touchstart', () => {
         stopAutoScroll();
+        document.querySelector('#hero').style.display = 'none';
         window.onscroll = function () {};
       });
       window.addEventListener('mousedown', () => {
         stopAutoScroll();
+        document.querySelector('#hero').style.display = 'none';
         window.onscroll = function () {};
       });
 
