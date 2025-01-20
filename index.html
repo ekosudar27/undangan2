@@ -342,7 +342,14 @@
 
         <div class="row justify-content-center mt-5">
           <div class="col-md-6">
-           
+            <div id="form-result" class="alert alert-success" style="display: none;">
+              <h4>Konfirmasi Kehadiran Terkirim!</h4>
+              <p><strong>Nama:</strong> <span id="result-nama"></span></p>
+              <p><strong>Jumlah Kehadiran:</strong> <span id="result-jumlah"></span></p>
+              <p><strong>Status:</strong> <span id="result-status"></span></p>
+              <p><strong>Pesan untuk Pengantin:</strong> <span id="result-pesan"></span></p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -516,7 +523,7 @@
         document.querySelector('#hero').style.display = 'none';
       }
 
-      function autoScrollGallery() {
+     /* function autoScrollGallery() {
         const galleryDivs = document.querySelectorAll('#gallery .col');
         let index = 0;
 
@@ -532,22 +539,25 @@
         }
 
         scrollToNextDiv();
-      }
+      }*/
 
       disableScroll();
 
       window.addEventListener('touchstart', () => {
         stopAutoScroll();
         document.querySelector('#hero').style.display = 'none';
+        document.querySelectorAll('section:not(#hero)');
       });
       window.addEventListener('mousedown', () => {
         stopAutoScroll();
         document.querySelector('#hero').style.display = 'none';
+        document.querySelectorAll('section:not(#hero)');
       });
 
       window.addEventListener('resize', () => {
         stopAutoScroll();
         document.querySelector('#hero').style.display = 'none';
+        document.querySelectorAll('section:not(#hero)');
       });
 
       if (window.innerWidth <= 768) {
@@ -569,6 +579,11 @@
             body: data,
           }).then(() => {
             alert("Konfirmasi Kehadiran Terkirim!");
+            document.getElementById("form-result").style.display = "block";
+            document.getElementById("result-nama").innerText = data.get("nama");
+            document.getElementById("result-jumlah").innerText = data.get("jumlah");
+            document.getElementById("result-status").innerText = data.get("status");
+            document.getElementById("result-pesan").innerText = data.get("pesan");
           });
         });
       });
