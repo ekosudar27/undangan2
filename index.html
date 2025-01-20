@@ -321,12 +321,18 @@
           </div>
           <div class="col-12">
             <div class="mb-3">
-              <label for="status" class="form-label">status</label>
+              <label for="status" class="form-label">Status</label>
               <select name="status" id="status" class="form-select">
                 <option selected>Pilih salah satu</option>
                 <option value="Hadir">Hadir</option>
                 <option value="Tidak Hadir">Tidak Hadir</option>
               </select>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="pesan" class="form-label">Pesan untuk Pengantin</label>
+              <textarea class="form-control" id="pesan" name="pesan" rows="3"></textarea>
             </div>
           </div>
           <div class="col-12" style="margin-top: 35px">
@@ -511,7 +517,7 @@
         document.querySelector('#gallery').style.display = 'none';
       }
 
-     /* function autoScrollGallery() {
+     function autoScrollGallery() {
         const galleryDivs = document.querySelectorAll('#gallery .col');
         let index = 0;
 
@@ -527,7 +533,7 @@
         }
 
         scrollToNextDiv();
-      }*/
+      }
 
       disableScroll();
 
@@ -542,7 +548,7 @@
         window.onscroll = function () {};
       });
 
-     /* window.addEventListener('resize', () => {
+     window.addEventListener('resize', () => {
         if (window.innerWidth <= 768) {
           autoScrollGallery();
         } else {
@@ -554,7 +560,7 @@
         autoScrollGallery();
       } else {
         autoScrollSections();
-      }*/
+      }
     </script>
 
     <script>
