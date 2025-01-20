@@ -510,7 +510,7 @@
         document.querySelector('#hero').style.display = 'none';
       }
 
-      function autoScrollGallery() {
+     /* function autoScrollGallery() {
         const galleryDivs = document.querySelectorAll('#gallery .col');
         let index = 0;
 
@@ -526,20 +526,22 @@
         }
 
         scrollToNextDiv();
-      }
+      }*/
 
       disableScroll();
 
       window.addEventListener('touchstart', () => {
         stopAutoScroll();
+        document.querySelector('#gallry').style.display = 'none';
         window.onscroll = function () {};
       });
       window.addEventListener('mousedown', () => {
         stopAutoScroll();
+        document.querySelector('#gallry').style.display = 'none';
         window.onscroll = function () {};
       });
 
-      window.addEventListener('resize', () => {
+     /* window.addEventListener('resize', () => {
         if (window.innerWidth <= 768) {
           autoScrollGallery();
         } else {
@@ -551,7 +553,7 @@
         autoScrollGallery();
       } else {
         autoScrollSections();
-      }
+      }*/
     </script>
 
     <script>
