@@ -39,7 +39,7 @@
         <div class="simply-countdown text-white"></div>
         <h4>Kepada Bapak/Ibu/Saudara/i, </h4>
         <h2><span id="guest-name"></span></h2>
-        <a href="#home" class="btn btn-lg mt-4" onclick="enableScroll()">Lihat Undangan</a>
+        <a href="#home" class="btn btn-lg mt-4" onclick="enableScroll(); hideHeroSection();">Lihat Undangan</a>
         <h4 class="maaf">*Mohon maaf apabila ada kesalahan dalam penulisan nama/gelar</h4>
       </main>
     </section>
@@ -478,6 +478,10 @@
         autoScrollSections();
       }
 
+      function hideHeroSection() {
+        document.querySelector('#hero').style.display = 'none';
+      }
+
       function playAudio() {
         audioIconWrapper.style.display = "flex";
         song.play();
@@ -523,7 +527,7 @@
         document.querySelector('#hero').style.display = 'none';
       }
 
-     /* function autoScrollGallery() {
+      function autoScrollGallery() {
         const galleryDivs = document.querySelectorAll('#gallery .col');
         let index = 0;
 
@@ -539,25 +543,22 @@
         }
 
         scrollToNextDiv();
-      }*/
+      }
 
       disableScroll();
 
       window.addEventListener('touchstart', () => {
         stopAutoScroll();
         document.querySelector('#hero').style.display = 'none';
-        document.querySelectorAll('section:not(#hero)');
       });
       window.addEventListener('mousedown', () => {
         stopAutoScroll();
         document.querySelector('#hero').style.display = 'none';
-        document.querySelectorAll('section:not(#hero)');
       });
 
       window.addEventListener('resize', () => {
         stopAutoScroll();
         document.querySelector('#hero').style.display = 'none';
-        document.querySelectorAll('section:not(#hero)');
       });
 
       if (window.innerWidth <= 768) {
