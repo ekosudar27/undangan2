@@ -439,7 +439,7 @@
       </div>
     </div>
 
-    <div class="nav-buttons bg-brown" style="display: none;">
+    <div class="nav-buttons" id="nav-buttons" >
       <button onclick="scrollToSection('home')">
         <i class="bi bi-house-door"></i> Home
       </button>
@@ -525,15 +525,12 @@
         isPlaying = !isPlaying;
       };
 
-     </script>
-
-    <script>
       function scrollToSection(sectionId) {
         document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
       }
 
       function showNavButtons() {
-        document.querySelector('.nav-buttons').style.display = 'flex';
+        document.getElementById('nav-buttons').style.display = 'flex';
       }
     </script>
 
@@ -600,7 +597,7 @@
         bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
-        display: flex;
+        display: none; /* Hide initially */
         gap: 10px;
        /* background-color: #8B4513;  Brown color */
         padding: 10px;
