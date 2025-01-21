@@ -439,6 +439,27 @@
       </div>
     </div>
 
+    <div class="nav-buttons bg-brown">
+      <button onclick="scrollToSection('home')">
+        <i class="bi bi-house-door"></i> Home
+      </button>
+      <button onclick="scrollToSection('info')">
+        <i class="bi bi-info-circle"></i> Info
+      </button>
+      <button onclick="scrollToSection('gallery')">
+        <i class="bi bi-images"></i> Gallery
+      </button>
+      <button onclick="scrollToSection('rsvp')">
+        <i class="bi bi-envelope"></i> RSVP
+      </button>
+      <button onclick="scrollToSection('gifts')">
+        <i class="bi bi-gift"></i> Gifts
+      </button>
+      <button onclick="scrollToSection('doa')">
+        <i class="bi bi-heart"></i> Doa
+      </button>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -577,6 +598,12 @@
     </script>
 
     <script>
+      function scrollToSection(sectionId) {
+        document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+      }
+    </script>
+
+    <script>
       window.addEventListener("load", function () {
         const form = document.getElementById("my-form");
         form.addEventListener("submit", function (e) {
@@ -632,5 +659,35 @@
         document.querySelector('#nama').value = nama;
       }
     </script>
+    <style>
+      .nav-buttons {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+       /* background-color: #8B4513;  Brown color */
+        padding: 10px;
+        border-radius: 10px;
+      }
+      .nav-buttons button {
+        padding: 10px;
+        background-color: #8B4513;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .nav-buttons button:hover {
+        background-color: #f58c04e0;
+      }
+      .nav-buttons i {
+        font-size: 1.2em;
+      }
+    </style>
   </body>
 </html>
