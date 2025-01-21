@@ -354,6 +354,17 @@
       </div>
     </section>
 
+    <section id="messages" class="messages">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <h2>Pesan untuk Pengantin</h2>
+            <div id="messages-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="gifts" class="gifts">
       <div class="container">
         <div class="row justify-content-center">
@@ -585,8 +596,32 @@
             document.getElementById("result-jumlah").innerText = data.get("jumlah");
             document.getElementById("result-status").innerText = data.get("status");
             document.getElementById("result-pesan").innerText = data.get("pesan");
+            loadMessages();
           });
         });
+
+        function loadMessages() {
+          fetch("https://script.google.com/macros/s/AKfycbw-ioZhvJFlhgxl173x2qpIS8Z0YjU_-xFLN77nRNVviX4pGwn_d08jQmhz5gIPJION/exec")
+            .then(response => response.json())
+            .then(data => {
+              const messagesList = document.getElementById("messages-list");
+              messagesList.innerHTML = "";
+              data.forEach(message => {
+                const messageElement = document.createElement("div");
+                messageElement.classList.add("message");
+                messageElement.innerHTML = `
+                  <p><strong>Nama:</strong> ${message.nama}</p>
+                  <p><strong>Jumlah Kehadiran:</strong> ${message.jumlah}</p>
+                  <p><strong>Status:</strong> ${message.status}</p>
+                  <p><strong>Pesan:</strong> ${message.pesan}</p>
+                  <hr>
+                `;
+                messagesList.appendChild(messageElement);
+              });
+            });
+        }
+
+        loadMessages();
       });
     </script>
 
