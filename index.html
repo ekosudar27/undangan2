@@ -39,12 +39,12 @@
         <div class="simply-countdown text-white"></div>
         <h4>Kepada Bapak/Ibu/Saudara/i, </h4>
         <h2><span id="guest-name"></span></h2>
-        <a href="#home" class="btn btn-lg mt-4" onclick="enableScroll(); hideHeroSection(); showNavButtons(); activateSections();">Lihat Undangan</a>
+        <a href="#home" class="btn btn-lg mt-4" onclick="enableScroll(); hideHeroSection(); showNavButtons();">Lihat Undangan</a>
         <h4 class="maaf">*Mohon maaf apabila ada kesalahan dalam penulisan nama/gelar</h4>
       </main>
     </section>
 
-    <div id="content" class="inactive">
+    <div id="content" onload="showNavButtons()">
       <section id="home" class="home">
         <div class="container">
           <div class="row justify-content-center">
@@ -64,10 +64,6 @@
               <div class="row">
                 <div class="col-8 text-end">
                   <h3>Novita Sari</h3>
-                  <!-- <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Alias fuga reprehenderit sunt labore vero laboriosam.
-                  </p> -->
                   <p>
                     Putri dari Bpk. Sudarmansyah <br />
                     dan <br />
@@ -154,7 +150,7 @@
                   <div class="row justify-content-center">
                     <div class="col-md-6">
                       <i class="bi bi-clock d-block"></i>
-                      <span class="jam-akad">08.00 - Selesai</span>
+                      <span class="jam-akad">08.00 - 10.00 WIB</span>
                     </div>
                     <div class="col-md-6">
                       <i class="bi bi-calendar d-block"></i>
@@ -354,7 +350,7 @@
       </div>
     </section>
 
-    <section id="messages" class="messages">
+    <section id="messages" class="messages" style="display: none;">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 col-10 text-center">
@@ -377,17 +373,26 @@
           <div class="col-md-6">
             <ul class="list-group">
               <li class="list-group-item">
-                <div class="fw-bold">BCA</div>
-                0640600764 - Novita Sari
+                <div class="fw-bold">
+                  <img src="path/to/mandiri-logo.png" alt="Mandiri Logo" style="width: 30px; height: auto; margin-right: 10px;">
+                  MANDIRI
+                </div>
+                1560023055058 - Novita Sari
+                <button onclick="copyToClipboard('1560023055058')" class="btn btn-sm btn-outline-secondary ml-2">Copy</button>
               </li>
                <li class="list-group-item">
                 <div class="fw-bold">Alamat</div>
-                a.n. Muhammad Alkahfi <br>
-                Jl. Danau Sentani No 11 Kel. Surabaya, kec. Kedaton Bandar Lampung, Lampung
+                a.n. Novita Sari <br>
+                Jl. Tamin Gg. Budiaman 3 No. 35, Sukajawa Baru
+Tanjung Karang Barat - Bandar Lampung
               </li>
               <li class="list-group-item">
-                <div class="fw-bold">BCA</div>
-                0640600764 - Muhammad Alkahfi
+                <div class="fw-bold">
+                  <img src="path/to/bca-logo.png" alt="BCA Logo" style="width: 30px; height: auto; margin-right: 10px;">
+                  BCA
+                </div>
+                8905770523 - Muhammad Al kahfi
+                <button onclick="copyToClipboard('8905770523')" class="btn btn-sm btn-outline-secondary ml-2">Copy</button>
               </li>
               <li class="list-group-item">
                 <div class="fw-bold">Alamat</div>
@@ -439,24 +444,24 @@
       </div>
     </div>
 
-    <div class="nav-buttons" id="nav-buttons" >
+    <div class="nav-buttons text-center" id="nav-buttons" style="display: none;">
       <button onclick="scrollToSection('home')">
-        <i class="bi bi-house-door"></i> Home
+        <i class="bi bi-house-door"></i> 
       </button>
       <button onclick="scrollToSection('info')">
-        <i class="bi bi-info-circle"></i> Info
+        <i class="bi bi-info-circle"></i> 
       </button>
       <button onclick="scrollToSection('gallery')">
-        <i class="bi bi-images"></i> Gallery
+        <i class="bi bi-images"></i> 
       </button>
       <button onclick="scrollToSection('rsvp')">
-        <i class="bi bi-envelope"></i> RSVP
+        <i class="bi bi-envelope"></i> 
       </button>
       <button onclick="scrollToSection('gifts')">
-        <i class="bi bi-gift"></i> Gifts
+        <i class="bi bi-gift"></i> 
       </button>
       <button onclick="scrollToSection('doa')">
-        <i class="bi bi-heart"></i> Doa
+        <i class="bi bi-heart"></i>
       </button>
     </div>
 
@@ -499,6 +504,7 @@
       function enableScroll() {
         document.body.style.overflow = 'auto';
         playAudio();
+        showNavButtons();
         autoScrollSections();
       }
 
@@ -532,6 +538,12 @@
       function showNavButtons() {
         document.getElementById('nav-buttons').style.display = 'flex';
       }
+
+      function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert('Nomor rekening berhasil disalin: ' + text);
+        });
+      }
     </script>
 
     <script>
@@ -551,6 +563,7 @@
             document.getElementById("result-jumlah").innerText = data.get("jumlah");
             document.getElementById("result-status").innerText = data.get("status");
             document.getElementById("result-pesan").innerText = data.get("pesan");
+            document.getElementById("messages").style.display = "block"; // Show messages section
             loadMessages();
           });
         });
@@ -591,7 +604,6 @@
       }
     </script>
     <style>
-      
       .nav-buttons {
         position: fixed;
         bottom: 10px;
@@ -599,7 +611,7 @@
         transform: translateX(-50%);
         display: none; /* Hide initially */
         gap: 10px;
-       /* background-color: #8B4513;  Brown color */
+        /*background-color: #8B4513; /* Brown color */
         padding: 10px;
         border-radius: 10px;
       }
